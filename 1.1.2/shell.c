@@ -21,31 +21,31 @@ int main(int argc, char *argv[]){
 	char *f = malloc(sizeof(char)*1024);
 	while(1){
 		scanf("%s",f);
-        opcion = atoi(f);
+        	opcion = atoi(f);
 		if (opcion == 9)
 			return 0;
 		pid_t pid = fork();
-		if (pid == 0){ //ESTOY EN EL HIJO, OSEA LLAMO A ALGUN COMANDO
+		if (pid == 0){ //ESTOY EN EL HIJO, LLAMO A ALGUN COMANDO
 			if (opcion!=0)
-                printf("Usted selecciono la opcion: %d\n",opcion);
-            char *nombreArchivo = malloc(sizeof(char)*256);
+				printf("Usted selecciono la opcion: %d\n",opcion);
+			char *nombreArchivo = malloc(sizeof(char)*256);
 			switch(opcion){
-                case 1: {//Crear un directorio
-                    printf("--------COMANDO PARA CREAR UN DIRECTORIO------------------\n");
+				case 1: {//Crear un directorio
+					printf("--------COMANDO PARA CREAR UN DIRECTORIO------------------\n");
 					printf("--------Ingrese un nombre para el nuevo Directorio--------\n$");
-                    scanf("%s",nombreArchivo);
+					scanf("%s",nombreArchivo);
 					char *argumentos[] = {"./crearDirectorio",nombreArchivo,NULL};
 					int res = execvp(argumentos[0],argumentos);
 					break;
-                }
-                case 2:{//Remover un directorio
-                    printf("--------COMANDO PARA REMOVER UN DIRECTORIO----------------\n");
+				}
+				case 2:{//Remover un directorio
+					printf("--------COMANDO PARA REMOVER UN DIRECTORIO----------------\n");
 					printf("--------Ingrese un nombre del Directorio a remover--------\n$");
-                    scanf("%s",nombreArchivo);
+					scanf("%s",nombreArchivo);
 					char *argumentos[] = {"./removerDirectorio",nombreArchivo,NULL};
 					int res = execvp(argumentos[0],argumentos);
 					break;
-                }
+				}
 				case 3:{ //Crear un archivo
 					printf("--------COMANDO PARA CREAR UN ARCHIVO---------------------\n");
 					printf("--------Ingrese un nombre para el nuevo archivo-----------\n$");
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]){
 					break;
 
 				}
-                case 5:{//Modificar los permisos de un archivo
+				case 5:{//Modificar los permisos de un archivo
 					printf("--------COMANDO PARA MODIFICAR LOS PERMISOS DE UN ARCHIVO-----\n");
 					printf("--------Ingrese el nombre del archivo para modificar los permisos---------\n$");
 					scanf("%s",nombreArchivo);
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]){
 					char *argumentos[] = {"./cambiarPermisos",nombreArchivo,permiso,NULL};
 					int res = execvp(argumentos[0],argumentos);
 					break;
-                }
+				}
 				case 6:{
 					char *argumentos[] = {"./mostrarAyuda",NULL};
 					execvp(argumentos[0],argumentos);
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]){
 				}
 				case 9:
 					printf("---------------------FINALIZANDO SHELL--------------------\n");
-                    printf("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n");
+					printf("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n");
 					return 0;
 				default:
 					printf("Opcion incorrecta");
@@ -90,10 +90,10 @@ int main(int argc, char *argv[]){
 		}
 		else{
 			wait(NULL);
-            printf("\n-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n");
+            		printf("\n-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n");
 			printf("Para visualizar la ayuda escriba '6'\n");
 			printf("Ingrese el numero de comando deseado:\n$");
-			}
+		}
 	}
 	return 0;
 }
