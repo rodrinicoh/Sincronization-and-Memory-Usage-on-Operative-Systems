@@ -7,7 +7,7 @@
 int main(int argc,char *argv[]){  
 	if (argc!=2){
 		printf("Cantidad incorrecta de parametros: %d",argc);
-		return 0; //Aca iria el exec();
+		return 0; 
 	}
 	int Path_Max = 1024;
 	char cwd[Path_Max];
@@ -30,7 +30,7 @@ int main(int argc,char *argv[]){
 	else
 		printf("Archivo: %s  Creado en la ruta %s\n",nombreArchivo,direccion);
 		
-	return 0; //Aca iria el exec();
+	return 0; 
 	
 
 }
